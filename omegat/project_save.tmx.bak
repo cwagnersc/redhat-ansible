@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx11.dtd">
+<tmx version="1.1">
+  <header creationtool="Omegat" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="3.6.0_10_unknown" segtype="sentence" srclang="en-US"/>
+  <body>
+<!-- Default translations -->
+    <tu>
+      <tuv lang="en-US">
+        <seg>A few items are worth noting at this point:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200510T180805Z" creationid="cwagner" creationdate="20200510T180358Z">
+        <seg>Poucos itens são dignos de nota neste momento:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>ANSIBLE_CONFIG (environment variable)</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T143630Z" creationid="cwagner" creationdate="20200408T143630Z">
+        <seg>ANSIBLE_CONFIG (variável de ambiente)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Ad-hoc command: a simple one-off task</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041325Z" creationid="cwagner" creationdate="20200408T041325Z">
+        <seg>Comando ad-hoc: uma simples tarefa única</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Additional output from the remaining hosts has been removed for sake of brevity.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200421T203745Z" creationid="cwagner" creationdate="20200421T203745Z">
+        <seg>Saída adicional dos comopadores restantes foi removida para efeito de brevidade.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Ansible for Red Hat Enterprise Linux 7 is located in the Extras channel.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135650Z" creationid="cwagner" creationdate="20200408T135650Z">
+        <seg>Ansible para Red Hat Enterprise Linux 7 é encotrado no canal Extras.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Are the developers in your organization speaking another language to you with this whole DevOps thing?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T043327Z" creationid="cwagner" creationdate="20200407T043242Z">
+        <seg>OS desenvolvedores na sua organização estão falando outra linguagem para você com toda essa coisa de DevOps?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Are you a typical system administrator with too much work and not enough time?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T040028Z" creationid="cwagner" creationdate="20200407T033544Z">
+        <seg>Você é um administrador de sistemas típico com muito trabalho e sem tempo suficiente?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>As we have just discovered, the default configuration file is /etc/ansible/ansible.cfg</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T143356Z" creationid="cwagner" creationdate="20200408T143356Z">
+        <seg>Como já descobrimos, o arquivo padrão de configuração é o /etc/ansible/ansible.cfg</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Before getting started, we need to define some terminology:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T050654Z" creationid="cwagner" creationdate="20200407T050654Z">
+        <seg>Antes de começar, precisamos definir alguma terminologia:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Configuration</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T140718Z" creationid="cwagner" creationdate="20200408T140718Z">
+        <seg>Configuração</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Configuration file</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T141407Z" creationid="cwagner" creationdate="20200408T141407Z">
+        <seg>Arquivo de configuração</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Control node: the host on which you use Ansible to execute tasks on the managed nodes</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041141Z" creationid="cwagner" creationdate="20200408T041141Z">
+        <seg>Nó de Congrole: O computador no qual você usa o Ansible para executar tarfas nos nós gerenciados</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Documentation for each module can be found at http://docs.ansible.com/ansible/latest/modules_by_category.html</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200421T161156Z" creationid="cwagner" creationdate="20200421T161156Z">
+        <seg>A documentação para cada módulo pode ser encontrado em http://docs.ansible.com/ansible/latest/modules_by_category.html</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Does the prospect of making a simple DNS server change or adjusting kernel parameters across your entire server farm make you cringe?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T043054Z" creationid="cwagner" creationdate="20200407T043054Z">
+        <seg>A perspectiva de fazer uma simples alteração no servidor de DNS ou ajuste de parâmetros no kernel em todo o parque de servidores fazem você tremer de medo?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Dynamic inventories are also possible, but outside the scope of this post.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200409T034855Z" creationid="cwagner" creationdate="20200409T034855Z">
+        <seg>Inventários dinâmicos também são possíveis, mas está fora do escopo desta postagem.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Each node reports SUCCESS and "changed" : true meaning the module execution was successful and the file was created/changed.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200510T181142Z" creationid="cwagner" creationdate="20200510T181142Z">
+        <seg>Cada nó que reporta SUCCESS e "changed": significam verdadeiramente que a execução do módulo foi bem sucedida e o arquivo foi criado/alterado.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Finally, SSH public key authentication has been configured and tested for this user account from the control node to each of the managed nodes.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135434Z" creationid="cwagner" creationdate="20200408T135434Z">
+        <seg>Finalmente, a chave de autenticação pública do SSH foi configurada e testada para esta conta de usuário do nó de controle para cada um dos nós gerenciados.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>For Extra Packages for Enterprise Linux (EPEL), this solution in the customer portal may also be helpful.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135828Z" creationid="cwagner" creationdate="20200408T135828Z">
+        <seg>PAra Pacotes Extra para o Enterprise Linux (EPEL), esta solução no portal do cliente tamnéb pode ser útil.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>For ease of use I'm going to give my system user passwordless sudo in this demonstration, your security policy may vary, and Ansible can handle a wide variety of privilege escalation use-cases.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T134922Z" creationid="cwagner" creationdate="20200408T134922Z">
+        <seg>Para facilitar o uso, darei ao meu usuário do sistema sudo sem senha nesta demonstração, sua política de segurança pode variar e o Ansible pode lidar com uma ampla variedade de casos de uso de escalação de privilégios.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>For sake of simplicity, the control node has the following entries in the /etc/hosts file:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T043858Z" creationid="cwagner" creationdate="20200408T043858Z">
+        <seg>Por uma questão de simplicidade, o nó de controle possui as seguintes entradas no arquivo /etc /hosts::</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Host inventory</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T145215Z" creationid="cwagner" creationdate="20200408T145215Z">
+        <seg>Inventário de computadores</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Host inventory: a list of managed nodes</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041243Z" creationid="cwagner" creationdate="20200408T041243Z">
+        <seg>Inventário de Computador: uma lista de nós gerenciados</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Idempotency: an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions
+Environment</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041708Z" creationid="cwagner" creationdate="20200408T041608Z">
+        <seg>Idempotência: uma operação é idempotente se o resultado de sua execução uma vez é exatamente o mesmo que o resultado de executá-la repedidamente sem ações de intervenção.
+Ambiente</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>If you’re using Red Hat Enterprise Linux 6, enable the EPEL repository.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135729Z" creationid="cwagner" creationdate="20200408T135729Z">
+        <seg>Se você está usando Red Hat Enterprise Linux 6, habilite o repositório EPEL.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>In this post, I will be using a minimal configuration file in the home directory of the user account added previously:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T145146Z" creationid="cwagner" creationdate="20200408T145146Z">
+        <seg>Nesta postagem, usarei um arquivo de configuração mínimo no diretório home da conta do usuário que foi adicionado previamente:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Installation</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135440Z" creationid="cwagner" creationdate="20200408T135440Z">
+        <seg>Instalação</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>It is based on the open source Ansible technology, which has become one of the world’s most popular open source IT automation technologies.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T045121Z" creationid="cwagner" creationdate="20200407T045121Z">
+        <seg>É baseado na tecnologia de código aberto Ansible, que se tornou uma das mais popualres tecnologias de código aberto para automação de TI do mundo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Let’s check the version:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T140016Z" creationid="cwagner" creationdate="20200408T140016Z">
+        <seg>Vamos verificar a versão:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Let’s confirm that all hosts can be located using this configuration file:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200409T035206Z" creationid="cwagner" creationdate="20200409T035206Z">
+        <seg>Vamos confirmar que todos os computadores podem ser localizados usando este arquivo de configuração:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Managed node: a host that is configured by the control node</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041206Z" creationid="cwagner" creationdate="20200408T041206Z">
+        <seg>Nó gerenciado: Um computador que é configurado pelo nó de controle</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Module: code that performs a particular common task such as adding a user, installing a package, etc.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041613Z" creationid="cwagner" creationdate="20200408T041445Z">
+        <seg>Módulo: código que executa uma tarefa comum particular como adicionar um usuário, instalar um pacote, etc.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Note the default configuration file, and that python is required and present in our minimal Red Hat Enterprise Linux 7.4 installation.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T140145Z" creationid="cwagner" creationdate="20200408T140145Z">
+        <seg>Note o arquivo da configuração default, e que o python é necessário e está presente em nossa instalaçao mínima do Red Hat Enterprise Linux 7.4.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Now that we have our environment configured and ready to go, let’s do some real work with Ansible.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200421T165441Z" creationid="cwagner" creationdate="20200421T165441Z">
+        <seg>Agora que temos nosso ambiente  configurado e pronto para seguir, vamos fazer algum trabalho sério com Ansible.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Now that we have validated our host inventory, let’s do a quick check to make sure all our hosts are up and running.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200424T181925Z" creationid="cwagner" creationdate="20200414T002801Z">
+        <seg>Agora que validamos nosso inventário do computador, vamos fazer uma rápida verificação para ter certeza que todos nossos equipamentos estão ligados e executando.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>On Fedora systems you will find Ansible in the base repository.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135906Z" creationid="cwagner" creationdate="20200408T135906Z">
+        <seg>Em sistemas Fedora você encontrará o Ansible no repositório base..</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Once the appropriate repository has been configured, it’s a quick and simple install:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135956Z" creationid="cwagner" creationdate="20200408T135956Z">
+        <seg>Uma vez que repositório apropriado foi configurado, é uuma instalação rápida e simples:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Or worse, making changes based on variable system characteristics such as installed memory or release version?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T043209Z" creationid="cwagner" creationdate="20200407T043209Z">
+        <seg>Ou pior, fazer alterações baseados em características variáveis de sistemas tais com memória instalada ou versão de lançamento?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Our host inventory file is as follows:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200409T034929Z" creationid="cwagner" creationdate="20200409T034929Z">
+        <seg>Nosso arquivo de inventário está como segue:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Playbook: a set of repeatable tasks for more complex configurations</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041357Z" creationid="cwagner" creationdate="20200408T041357Z">
+        <seg>Playbook: um conjunto de tarefas repetidas por configurações mais complexas</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Ready, set, Ansible!</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200421T164957Z" creationid="cwagner" creationdate="20200421T164957Z">
+        <seg>Preparar, apontar, Ansible!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Red Hat Ansible Automation is an agentless human readable automation tool that uses SSH to orchestrate configuration management, application deployment, and provisioning in a flat or multi-tier environment.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T044830Z" creationid="cwagner" creationdate="20200407T044830Z">
+        <seg>Red Hat Ansible Automation é uma ferramena de automação sem agente de leitura fácil aos humanos que usa SSH para orquestrar o gerenciamento de configuração, publicação de aplicaçãoes, e provisionamento em um ambiente padronizado ou em configurações múltiplas.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Similarly for individual groups, such as the webservers group:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200409T035359Z" creationid="cwagner" creationdate="20200409T035359Z">
+        <seg>Similarmente para grupos individuais, como o grupo webservers:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Since the managed nodes will need to have some additional packages installed, our first task is to configure a yum repository on each host using this configuration file:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200421T165825Z" creationid="cwagner" creationdate="20200421T165825Z">
+        <seg>Como os nós gerenciados precisarão ter alguns pacotes adicionais instalados, nossa primemira tarefa é configurar um repositório yum em cada computador usando este arquivo de configuração:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Since we have already configured the managed nodes with a user account, privilege escalation, and SSH public key authentication, we will continue by configuring the control node.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T140936Z" creationid="cwagner" creationdate="20200408T140936Z">
+        <seg>Como já configuramos os nós gerenciados com uma conta de usuário, escalonamento de privilégios e autenticação de chave pública SSH, continuaremos configurando o nó de controle.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>The configuration of the control node consists of both an Ansible configuration file and a host inventory file.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T141335Z" creationid="cwagner" creationdate="20200408T141335Z">
+        <seg>A configuração do nó de controle consiste do arquivo de configuração do Ansible e do arquivo de invetário de computadores.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>The default host inventory file is /etc/ansible/hosts but can be changed via the configuration file (as shown above) or by using the -i option on the ansible command.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200409T034723Z" creationid="cwagner" creationdate="20200409T034723Z">
+        <seg>O arquivo de configuração padrão é o /etc/ansible/hosts mas pode ser alterado via arquivo de configuração (como mostrado acima) ou usando a opção -i no comando ansible.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>The environment in this post consists of one control node (vm1) and four managed nodes (vm2, vm3, vm4, vm5) all running in a virtual environment with a minimal Red Hat Enterprise Linux 7.4 installation.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T041900Z" creationid="cwagner" creationdate="20200408T041900Z">
+        <seg>O ambiente nesta postagem consiste de um nó de controle (vm1) e uatro nós gerenciados (vm2, vm3, vm4, vm5) todas rodando em um ambiente virtual com a instalação mínima do Re Hat Enterprise Linux 7.4.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>The final setup task in our environment is to configure vm1 with Apache and a Red Hat Enterprise Linux 7 yum repository in order for the managed nodes to install additional packages:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200421T164937Z" creationid="cwagner" creationdate="20200421T161502Z">
+        <seg>A tarefa de configuração final em nosso ambiente é para configurar vm1 com Apache e um repositório yum do Red Hat Enterprise Linux 7 para que os nós gerenciados instlem pacotes adicionais:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>The number of built-in modules continues to grow with each Ansible release:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200414T010803Z" creationid="cwagner" creationdate="20200414T010803Z">
+        <seg>O número de módulo embutidos contua crescendo com cada nova versão do Ansible:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>The order in which a configuration file is located is as follows:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T143616Z" creationid="cwagner" creationdate="20200408T143616Z">
+        <seg>A ordem na qual o arquivo de está localizado é como segue:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>This blog post will help you understand the basics of Ansible and how it can be used in your role as a system administrator to more efficiently manage your systems.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T050623Z" creationid="cwagner" creationdate="20200407T050623Z">
+        <seg>Esta postagem de blog ajudará você a entender o básico de Ansible e como ele pode ser usado em sua função como administrador de sistemas para gerenciar mais eficientemente seus sistemas.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>This is only an example and you may wish to use your own sudo configuration variant.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135209Z" creationid="cwagner" creationdate="20200408T135209Z">
+        <seg>Este é apeans um exemplo e você pode querer usar sua própria variação de configuração do sudo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>This user account has been configured for privilege escalation via the following entry in the /etc/sudoers file:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T135032Z" creationid="cwagner" creationdate="20200408T135032Z">
+        <seg>Esta conta de usuário pode ser configurada para escalação de privilégio através da seguinte entrada no arquivo /etc/sudoers:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Through this limited­ time engagement, Red Hat Cloud Success can help you effectively plan and deploy cloud solutions and strategically plan for the future.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200510T180505Z" creationid="cwagner" creationdate="20200510T180505Z">
+        <seg>PP.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>We can copy this file to each of the managed nodes using an ad-hoc command with the copy module using the -m option and specify the required arguments using the -a option as follows:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200421T170025Z" creationid="cwagner" creationdate="20200421T170025Z">
+        <seg>Podemos copiar este arquivo para cada nó gerenciado usando um comando ad-hoc com o módulo copy usando a opção -m e especificar os arqumentos necessários usando a opção -a como segue:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>We can see from the above output that all systems returned a successful result, nothing changed, and the result of each "ping" was "pong".</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200414T010649Z" creationid="cwagner" creationdate="20200414T010649Z">
+        <seg>Podemos ver pela saída acima que todos os sistemas retornaram um resultado bem-sucedido, nada alterado, e o resultado de cada "ping" foi "pong".</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>We have defined four groups: webservers on vm2 and vm3, dbservers on vm4, logservers on vm5 and lamp which consists of the webservers and dbservers groups.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200409T035119Z" creationid="cwagner" creationdate="20200409T035119Z">
+        <seg>Definimos quatro grupos: webservers com v2 e vm3, dbservers com vm4, logservers com vm5 e lamp que consiste dos grupos webservers e dbservrs.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>We will be using a simple static inventory file.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200409T034812Z" creationid="cwagner" creationdate="20200409T034812Z">
+        <seg>Usaremos um simples arquivo de invetário estático.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>We will do this using an ad-hoc command that uses the ping module:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200414T002838Z" creationid="cwagner" creationdate="20200414T002838Z">
+        <seg>Vamos fazer isso usando um comando ad-hoc que usa um módulo ping:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>You can modify this global configuration file or make a copy specific to a particular directory.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T143449Z" creationid="cwagner" creationdate="20200408T143449Z">
+        <seg>Você pode modificar este arquivo de configuração global ou fazer uma cópia específica para um diretório diferente.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>You can obtain a list of available modules using:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200414T010713Z" creationid="cwagner" creationdate="20200414T010713Z">
+        <seg>Você pode obter a list dos módulos disponíveis usando:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>ansible.cfg (per directory)</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T144815Z" creationid="cwagner" creationdate="20200408T144815Z">
+        <seg>ansible.cfg (por diretório)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>redhat.com
+A system administrator's guide to getting started with Ansible - FAST!</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T033442Z" creationid="cwagner" creationdate="20200407T033442Z">
+        <seg>redhat.com
+Um guia para administrador de sistemas iniciarem com Ansible - RÁPIDO!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>~/.ansible.cfg (home directory)</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200408T144828Z" creationid="cwagner" creationdate="20200408T144828Z">
+        <seg>~/.ansible.cfg (diretório home)</seg>
+      </tuv>
+    </tu>
+<!-- Alternative translations -->
+  </body>
+</tmx>

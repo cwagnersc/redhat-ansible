@@ -1,0 +1,14 @@
+10/05/2020 15:22
+Estatística do projeto
+
+                           	Segmentos	Palavras	Caracteres (sem espaços)	Caracteres (incluindo espaços)	#Arquivos	
+Total de palavras          	      317	    2896	                   17429	                         19966	        1	
+Restantes:                 	      252	    1871	                   12189	                         13783	        1	
+Únicos:                    	      278	    2827	                   16972	                         19477	        1	
+Segmentos únicos restantes:	      213	    1802	                   11732	                         13294	        1	
+
+
+Estatística do arquivo individual:
+
+Nome do arquivo    	Total de segmentos 	Segmentos restantes	Segmentos únicos	Segmentos únicos restantes	Total de palavras	Palavras restantes para traduzir	Palavras únicas	Palavras únicas restantes	Total de caracteres (sem espaços)	Caracteres restantes (sem espaços)	Caracteres únicos (sem espaços)	Caracteres únicos restantes (sem espaços)	Total de caracteres (incluindo espaços)	Caracteres restantes (incluindo espaços)	Caracteres únicos (incluindo espaços)	Caracteres únicos restantes (incluindo espaços)	
+red-hat-ansible.txt	                317	                252	             278	                       213	             2896	                            1871	           2827	                     1802	                            17429	                             12189	                          16972	                                    11732	                                  19966	                                   13783	                                19477	                                          13294	

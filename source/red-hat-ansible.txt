@@ -1,0 +1,520 @@
+
+redhat.com
+A system administrator's guide to getting started with Ansible - FAST!
+Curtis Rempel
+20-25 minutos
+
+Are you a typical system administrator with too much work and not enough time? Does the prospect of making a simple DNS server change or adjusting kernel parameters across your entire server farm make you cringe? Or worse, making changes based on variable system characteristics such as installed memory or release version? Are the developers in your organization speaking another language to you with this whole DevOps thing?  
+
+Red Hat Ansible Automation is an agentless human readable automation tool that uses SSH to orchestrate configuration management, application deployment, and provisioning in a flat or multi-tier environment. It is based on the open source Ansible technology, which has become one of the world’s most popular open source IT automation technologies.
+
+This blog post will help you understand the basics of Ansible and how it can be used in your role as a system administrator to more efficiently manage your systems.
+
+Before getting started, we need to define some terminology:
+
+Control node: the host on which you use Ansible to execute tasks on the managed nodes
+
+Managed node: a host that is configured by the control node
+
+Host inventory: a list of managed nodes
+
+Ad-hoc command: a simple one-off task
+
+Playbook: a set of repeatable tasks for more complex configurations
+
+Module: code that performs a particular common task such as adding a user, installing a package, etc.
+
+Idempotency: an operation is idempotent if the result of performing it once is exactly the same as the result of performing it repeatedly without any intervening actions
+Environment
+
+The environment in this post consists of one control node (vm1) and four managed nodes (vm2, vm3, vm4, vm5) all running in a virtual environment with a minimal Red Hat Enterprise Linux 7.4 installation. For sake of simplicity, the control node has the following entries in the /etc/hosts file:
+
+192.168.102.211 vm1 vm1.redhat.lab
+192.168.102.212 vm2 vm2.redhat.lab
+192.168.102.213 vm3 vm3.redhat.lab
+192.168.102.214 vm4 vm4.redhat.lab
+192.168.102.215 vm5 vm5.redhat.lab
+
+For ease of use I'm going to give my system user passwordless sudo in this demonstration, your security policy may vary, and Ansible can handle a wide variety of privilege escalation use-cases. This user account has been configured for privilege escalation via the following entry in the /etc/sudoers file:
+
+%wheel ALL=(ALL) NOPASSWD: ALL
+
+This is only an example and you may wish to use your own sudo configuration variant.  
+
+Finally, SSH public key authentication has been configured and tested for this user account from the control node to each of the managed nodes.
+Installation
+
+Ansible for Red Hat Enterprise Linux 7 is located in the Extras channel. If you’re using Red Hat Enterprise Linux 6, enable the EPEL repository. For Extra Packages for Enterprise Linux (EPEL), this solution in the customer portal may also be helpful. On Fedora systems you will find Ansible in the base repository.
+
+Once the appropriate repository has been configured, it’s a quick and simple install:
+
+[curtis@vm1 ~]$ sudo yum install -y ansible
+
+Let’s check the version:
+
+[curtis@vm1 ~]$ ansible --version
+ansible 2.4.1.0
+ config file = /etc/ansible/ansible.cfg
+ configured module search path = [u'/home/curtis/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+ ansible python module location = /usr/lib/python2.7/site-packages/ansible
+ executable location = /bin/ansible
+ python version = 2.7.5 (default, May 3 2017, 07:55:04) [GCC 4.8.5 20150623 (Red Hat 4.8.5-14)]
+
+Note the default configuration file, and that python is required and present in our minimal Red Hat Enterprise Linux 7.4 installation.
+Configuration
+
+Since we have already configured the managed nodes with a user account, privilege escalation, and SSH public key authentication, we will continue by configuring the control node.
+
+The configuration of the control node consists of both an Ansible configuration file and a host inventory file.
+Configuration file
+
+As we have just discovered, the default configuration file is /etc/ansible/ansible.cfg
+
+You can modify this global configuration file or make a copy specific to a particular directory. The order in which a configuration file is located is as follows:
+
+    ANSIBLE_CONFIG (environment variable)
+
+    ansible.cfg (per directory)
+
+    ~/.ansible.cfg (home directory)
+
+    /etc/ansible/ansible.cfg (global)
+
+In this post, I will be using a minimal configuration file in the home directory of the user account added previously:
+
+[curtis@vm1 ~]$ cat ansible.cfg
+[defaults]
+inventory = $HOME/hosts
+
+Host inventory
+
+The default host inventory file is /etc/ansible/hosts but can be changed via the configuration file (as shown above) or by using the -i option on the ansible command. We will be using a simple static inventory file. Dynamic inventories are also possible, but outside the scope of this post.
+
+Our host inventory file is as follows:
+
+[webservers]
+vm2
+vm3
+
+[dbservers]
+vm4
+
+[logservers]
+vm5
+
+[lamp:children]
+webservers
+dbservers
+
+We have defined four groups: webservers on vm2 and vm3, dbservers on vm4, logservers on vm5 and lamp which consists of the webservers and dbservers groups.
+
+Let’s confirm that all hosts can be located using this configuration file:
+
+[curtis@vm1 ~]$ ansible all --list-hosts
+ hosts (4):
+   vm5
+   vm2
+   vm3
+   vm4
+
+Similarly for individual groups, such as the webservers group:
+
+[curtis@vm1 ~]$ ansible webservers --list-hosts
+ hosts (2):
+   vm2
+   vm3
+
+Now that we have validated our host inventory, let’s do a quick check to make sure all our hosts are up and running. We will do this using an ad-hoc command that uses the ping module:
+
+[curtis@vm1 ~]$ ansible all -m ping
+vm4 | SUCCESS => {
+   "changed": false, 
+   "failed": false, 
+   "ping": "pong"
+}
+vm5 | SUCCESS => {
+   "changed": false, 
+   "failed": false, 
+   "ping": "pong"
+}
+vm3 | SUCCESS => {
+   "changed": false, 
+   "failed": false, 
+   "ping": "pong"
+}
+vm2 | SUCCESS => {
+   "changed": false, 
+   "failed": false, 
+   "ping": "pong"
+}
+
+We can see from the above output that all systems returned a successful result, nothing changed, and the result of each "ping" was "pong".
+
+You can obtain a list of available modules using:
+
+[curtis@vm1 ~]$ ansible-doc -l
+
+The number of built-in modules continues to grow with each Ansible release:
+
+[curtis@vm1 ~]$ ansible-doc -l | wc -l
+1378
+
+Documentation for each module can be found at http://docs.ansible.com/ansible/latest/modules_by_category.html
+
+The final setup task in our environment is to configure vm1 with Apache and a Red Hat Enterprise Linux 7 yum repository in order for the managed nodes to install additional packages:
+
+[root@vm1 ~]# yum install -y httpd
+[root@vm1 ~]# systemctl enable httpd
+[root@vm1 ~]# systemctl start httpd
+[root@vm1 ~]# mkdir /media/iso
+[root@vm1 ~]# mount -o loop /root/rhel-server-7.4-x86_64-dvd.iso /media/iso
+[root@vm1 ~]# ln -s /media/iso /var/www/html/rhel7
+
+Ready, set, Ansible!
+
+Now that we have our environment configured and ready to go, let’s do some real work with Ansible.
+
+Since the managed nodes will need to have some additional packages installed, our first task is to configure a yum repository on each host using this configuration file:
+
+[curtis@vm1 ~]$ cat dvd.repo
+[RHEL7]
+name = RHEL 7
+baseurl = http://vm1/rhel7/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+enabled = 1
+gpgcheck = 1
+
+We can copy this file to each of the managed nodes using an ad-hoc command with the copy module using the -m option and specify the required arguments using the -a option as follows:
+
+[curtis@vm1 ~]$ ansible all -m copy -a 'src=dvd.repo dest=/etc/yum.repos.d owner=root group=root mode=0644' -b
+vm5 | SUCCESS => {
+   "changed": true, 
+   "checksum": "c15fdb5c1183f360ce29a1274c5f69e4e43060f5", 
+   "dest": "/etc/yum.repos.d/dvd.repo", 
+   "failed": false, 
+   "gid": 0, 
+   "group": "root", 
+   "md5sum": "db5a5da08d1c4be953cd0ae6625d8358", 
+   "mode": "0644", 
+   "owner": "root", 
+   "secontext": "system_u:object_r:system_conf_t:s0", 
+   "size": 135, 
+   "src": "/home/curtis/.ansible/tmp/ansible-tmp-1516898124.58-210025572567032/source", 
+   "state": "file", 
+   "uid": 0
+}
+
+[...]
+
+Additional output from the remaining hosts has been removed for sake of brevity.
+
+A few items are worth noting at this point:
+
+    Each node reports SUCCESS and "changed" : true meaning the module execution was successful and the file was created/changed. If we run the command again, the output will include "changed" : false meaning the file is already present and configured as required. In other words, Ansible will only make the required changes if they do not already exist. This is what is known as "idempotence".
+
+    The -b option (see http://docs.ansible.com/ansible/latest/become.html) causes the remote task to use privilege escalation (i.e. sudo) which is required to copy files into the /etc/yum.repos.d directory
+
+    You can find out what arguments the copy module requires using:
+
+[curtis@vm1 ~]$ ansible-doc copy
+
+Playbooks
+
+While ad-hoc commands are useful for testing and simple one-off tasks, playbooks can be used to capture a set of repeatable tasks to run in the future. A playbook contains one or more plays which define a set of hosts to configure and a list of tasks to be performed.
+
+In our scenario, we need to configure web servers, database servers, and a centralized logging server. The specific requirements are:
+
+    The httpd package is installed on the web servers, enabled, and started
+
+    Each web server has a default page with text "Welcome to <hostname> on <ip address>"
+
+    Each web server has a user account with suitable access for content management
+
+    The MariaDB package is installed on the database servers, enabled, and started
+
+    The log server host is configured to accept remote logging messages
+
+    Hosts in the webservers and dbservers groups send a copy of log messages to the log server host
+
+The following playbook (myplaybook.yml) will configure everything we need.
+
+As you review the playbook, please note the following:
+
+    The user module requires a hash of the plaintext password (see "ansible-doc user" for details).  This can be achieved as follows
+
+        [curtis@vm1 ~]$ python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass())" Password: $6$rounds=656000$bp7zTIl.nar2WQPS$U5CBB15GHnzBqnhY0r7UX65FrBI6w/w9YcAL2kN9PpDaYQIDY6Bi.CAEL6PRRKUqe2bJYgsayyh9NOP1kUy4w.
+
+    The default web page content is created using "facts" gathered from the host. You can discover and use host facts using the setup module:
+
+[curtis@vm1 ~]$ ansible vm2 -m setup
+
+---
+- hosts: webservers
+ become: yes
+ tasks:
+   - name: install Apache server
+     yum:
+       name: httpd
+       state: latest
+
+   - name: enable and start Apache server
+     service:
+       name: httpd
+       enabled: yes
+       state: started
+
+   - name: open firewall port
+     firewalld:
+       service: http
+       immediate: true
+       permanent: true
+       state: enabled
+
+   - name: create web admin group
+     group:
+       name: web
+       state: present
+
+   - name: create web admin user
+     user:
+       name: webadm
+       comment: "Web Admin"
+       password: $6$rounds=656000$bp7zTIl.nar2WQPS$U5CBB15GHnzBqnhY0r7UX65FrBI6w/w9YcAL2kN9PpDaYQIDY6Bi.CAEL6PRRKUqe2bJYgsayyh9NOP1kUy4w.
+       groups: web
+       append: yes
+
+   - name: set content directory group/permissions 
+     file:
+       path: /var/www/html
+       owner: root
+       group: web
+       state: directory
+       mode: u=rwx,g=rwx,o=rx,g+s
+
+   - name: create default page content
+     copy:
+       content: "Welcome to {{ ansible_fqdn}} on {{ ansible_default_ipv4.address }}"
+       dest: /var/www/html/index.html
+       owner: webadm
+       group: web
+       mode: u=rw,g=rw,o=r
+
+- hosts: dbservers
+ become: yes
+ tasks:
+   - name: install MariaDB server
+     yum:
+       name: mariadb-server
+       state: latest
+
+   - name: enable and start MariaDB server
+     service:
+       name: mariadb
+       enabled: yes
+       state: started
+
+- hosts: logservers
+ become: yes
+ tasks:
+   - name: configure rsyslog remote log reception over udp
+     lineinfile:
+       path: /etc/rsyslog.conf
+       line: "{{ item }}"
+       state: present
+     with_items:
+       - '$ModLoad imudp'
+       - '$UDPServerRun 514'
+     notify:
+       - restart rsyslogd
+
+   - name: open firewall port
+     firewalld:
+       port: 514/udp
+       immediate: true
+       permanent: true
+       state: enabled
+
+ handlers:
+   - name: restart rsyslogd
+     service:
+       name: rsyslog
+       state: restarted
+
+- hosts: lamp
+ become: yes
+ tasks:
+   - name: configure rsyslog
+     lineinfile:
+       path: /etc/rsyslog.conf
+       line: '*.* @192.168.102.215:514'
+       state: present
+     notify:
+       - restart rsyslogd
+
+ handlers:
+   - name: restart rsyslogd
+     service:
+       name: rsyslog
+       state: restarted
+
+Running the playbook
+
+Our playbook can be run using:
+
+[curtis@vm1 ~]$ ansible-playbook myplaybook.yml
+
+From the output below, we can see that the web server configuration occurs only on vm2 and vm3 (play 1) while the database is installed on vm4 (play 2) and the logserver (vm5) is configured with play 3. Finally, play 4 configures the webservers and dbservers hosts via the "lamp" group for remote logging.
+
+PLAY [webservers] *********************************************************************
+
+TASK [Gathering Facts] ****************************************************************
+ok: [vm2]
+ok: [vm3]
+
+TASK [install Apache server] **********************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [enable and start Apache server] *************************************************
+changed: [vm2]
+changed: [vm3]
+
+TASK [open firewall port] *************************************************************
+changed: [vm2]
+changed: [vm3]
+
+TASK [create web admin group] *********************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [create web admin user] **********************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [set content directory group/permissions] ****************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [create default page content] ****************************************************
+changed: [vm3]
+changed: [vm2]
+
+PLAY [dbservers] **********************************************************************
+
+TASK [Gathering Facts] ****************************************************************
+ok: [vm4]
+
+TASK [install MariaDB server] *********************************************************
+changed: [vm4]
+
+TASK [enable and start MariaDB server] ************************************************
+changed: [vm4]
+
+PLAY [logservers] *********************************************************************
+
+TASK [Gathering Facts] ****************************************************************
+ok: [vm5]
+
+TASK [configure rsyslog remote log reception over udp] ********************************
+changed: [vm5] => (item=$ModLoad imudp)
+changed: [vm5] => (item=$UDPServerRun 514)
+
+TASK [open firewall port] *************************************************************
+changed: [vm5]
+
+RUNNING HANDLER [restart rsyslogd] ****************************************************
+changed: [vm5]
+
+PLAY [lamp] ***************************************************************************
+
+TASK [Gathering Facts] ****************************************************************
+ok: [vm3]
+ok: [vm2]
+ok: [vm4]
+
+TASK [configure rsyslog] **************************************************************
+changed: [vm2]
+changed: [vm3]
+changed: [vm4]
+
+RUNNING HANDLER [restart rsyslogd] ****************************************************
+changed: [vm3]
+changed: [vm2]
+changed: [vm4]
+
+PLAY RECAP ****************************************************************************
+vm2                        : ok=11 changed=9 unreachable=0    failed=0 
+vm3                        : ok=11 changed=9 unreachable=0    failed=0 
+vm4                        : ok=6 changed=4 unreachable=0    failed=0 
+vm5                        : ok=4 changed=3 unreachable=0    failed=0 
+
+And you’re done!
+
+You can verify the webserver hosts using:
+
+[curtis@vm1 ~]$ curl http://vm2
+Welcome to vm2 on 192.168.102.212
+[curtis@vm1 ~]$ curl http://vm3
+Welcome to vm3 on 192.168.102.213 
+
+and remote logging using the logger command on the webservers and dbservers hosts:
+
+[curtis@vm1 ~]$ ansible lamp -m command -a 'logger hurray it works'
+vm3 | SUCCESS | rc=0 >>
+
+vm4 | SUCCESS | rc=0 >>
+
+vm2 | SUCCESS | rc=0 >>
+
+Confirmation on the central logging server:
+
+[curtis@vm1 ~]$ ansible logservers -m command -a "grep 'hurray it works$' /var/log/messages" -b
+vm5 | SUCCESS | rc=0 >>
+Jan 30 13:28:29 vm3 curtis: hurray it works
+Jan 30 13:28:29 vm2 curtis: hurray it works
+Jan 30 13:28:29 vm4 curtis: hurray it works
+
+Tips & tricks
+If you’re new to YAML, the syntax can be tricky at first, particularly with spacing (no tabs).
+
+Before running a playbook, you can check the syntax using:
+
+$ ansible-playbook --syntax-check myplaybook.yml
+
+Using vim with syntax highlighting is helpful not only in learning yaml, but in finding syntax problems. A quick way to enable vim for yaml syntax is by adding the following line to your ~/.vimrc file:
+
+autocmd Filetype yaml setlocal tabstop=2 ai colorcolumn=1,3,5,7,9,80
+
+If you’d like something with a few more features, including color, one such plugin can be found here.
+If you prefer to use emacs instead of vim, enable the EPEL repository and install the emacs-yaml-mode package.
+You can test a playbook without actually making any changes to the target hosts:
+
+$ ansible-playbook --check myplaybook.yml
+
+Stepping through a playbook may also be useful:
+
+$ ansible-playbook --step myplaybook.yml
+
+Similar to a shell script, you can make your Ansible playbook executable and add the following to the top of the file:
+
+#!/bin/ansible-playbook
+
+To execute arbitrary ad-hoc shell commands, use the command module (the default module if -m is not specified). If you need to use things like redirection, pipelines, etc., then use the shell module instead.
+Speed up writing playbooks by checking the "EXAMPLES:" section in the documentation for a particular module.
+Use string quoting in playbooks to avoid issues with special characters within a string.
+Logging is disabled by default. To enable logging, use the log_path parameter in the Ansible configuration file.
+
+I hope this post has given you a better idea of how Ansible works and how it can save you both time and effort using playbooks to document and repeat mundane tasks with ease and accuracy. Be sure to continue learning at http://docs.ansible.com and https://www.redhat.com/en/technologies/management/ansible.
+
+Happy automating!
+
+imageCurtis Rempel, RHCA, is a senior Platform TAM and team lead in Canada and a former Red Hat Certified Instructor and Examiner (RHCI/RHCX). His Linux journey started in 1994 with a Red Hat Linux 2.1 CD from Jon "maddog" Hall. As a TAM, he has supported enterprise customers in the finance, telecommunications, and airline industries with expertise in automation, kernel, and storage. Learn more about Curtis.
+
+A Red Hat Technical Account Manager (TAM) is a specialized product expert who works collaboratively with IT organizations to strategically plan for successful deployments and help realize optimal performance and growth. The TAM is part of Red Hat’s world class Customer Experience and Engagement organization and provides proactive advice and guidance to help you identify and address potential problems before they occur. Should a problem arise, your TAM will own the issue and engage the best resources to resolve it as quickly as possible with minimal disruption to your business.
+
+Connect with TAMs at a Red Hat Convergence event near you! Red Hat Convergence is a free, invitation-only event offering technical users an opportunity to deepen their Red Hat product knowledge and discover new ways to apply open source technology to meet their business goals. These events travel to cities around the world to provide you with a convenient, local one-day experience to learn and connect with Red Hat experts and industry peers.
+
+Open source is collaborative curiosity. Join us at Red Hat Summit, May 8-10, in San Francisco to connect with TAMs and other Red Hat experts in person! Register now for only US$1,100 using code CEE18.
+
+Red Hat Cloud Success is designed to help simplify your IT transformation and accelerate your adoption of cloud technologies with deep product expertise, guidance, and support. From the proof of concept stage to production, a highly skilled cloud technical specialist will partner with you to provide continuity and help ensure successful implementation of your cloud solution. Through this limited­ time engagement, Red Hat Cloud Success can help you effectively plan and deploy cloud solutions and strategically plan for the future.
+

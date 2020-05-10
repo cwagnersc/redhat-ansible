@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx11.dtd">
+<tmx version="1.1">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="5.2.0_0_747fc65a" segtype="sentence" srclang="en-US"/>
+  <body>
+<!-- Default translations -->
+    <tu>
+      <tuv lang="en-US">
+        <seg>Are the developers in your organization speaking another language to you with this whole DevOps thing?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T043327Z" creationid="cwagner" creationdate="20200407T043242Z">
+        <seg>OS desenvolvedores na sua organização estão falando outra linguagem para você com toda essa coisa de DevOps?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Are you a typical system administrator with too much work and not enough time?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T040028Z" creationid="cwagner" creationdate="20200407T033544Z">
+        <seg>Você é um administrador de sistemas típico com muito trabalho e sem tempo suficiente?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Before getting started, we need to define some terminology:</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T050654Z" creationid="cwagner" creationdate="20200407T050654Z">
+        <seg>Antes de começar, precisamos definir alguma terminologia:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Does the prospect of making a simple DNS server change or adjusting kernel parameters across your entire server farm make you cringe?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T043054Z" creationid="cwagner" creationdate="20200407T043054Z">
+        <seg>A perspectiva de fazer uma simples alteração no servidor de DNS ou ajuste de parâmetros no kernel em todo o parque de servidores fazem você tremer de medo?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>It is based on the open source Ansible technology, which has become one of the world’s most popular open source IT automation technologies.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T045121Z" creationid="cwagner" creationdate="20200407T045121Z">
+        <seg>É baseado na tecnologia de código aberto Ansible, que se tornou uma das mais popualres tecnologias de código aberto para automação de TI do mundo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Or worse, making changes based on variable system characteristics such as installed memory or release version?</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T043209Z" creationid="cwagner" creationdate="20200407T043209Z">
+        <seg>Ou pior, fazer alterações baseados em características variáveis de sistemas tais com memória instalada ou versão de lançamento?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>Red Hat Ansible Automation is an agentless human readable automation tool that uses SSH to orchestrate configuration management, application deployment, and provisioning in a flat or multi-tier environment.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T044830Z" creationid="cwagner" creationdate="20200407T044830Z">
+        <seg>Red Hat Ansible Automation é uma ferramena de automação sem agente de leitura fácil aos humanos que usa SSH para orquestrar o gerenciamento de configuração, publicação de aplicaçãoes, e provisionamento em um ambiente padronizado ou em configurações múltiplas.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>This blog post will help you understand the basics of Ansible and how it can be used in your role as a system administrator to more efficiently manage your systems.</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T050623Z" creationid="cwagner" creationdate="20200407T050623Z">
+        <seg>Esta postagem de blog ajudará você a entender o básico de Ansible e como ele pode ser usado em sua função como administrador de sistemas para gerenciar mais eficientemente seus sistemas.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="en-US">
+        <seg>redhat.com
+A system administrator's guide to getting started with Ansible - FAST!</seg>
+      </tuv>
+      <tuv lang="pt-BR" changeid="cwagner" changedate="20200407T033442Z" creationid="cwagner" creationdate="20200407T033442Z">
+        <seg>redhat.com
+Um guia para administrador de sistemas iniciarem com Ansible - RÁPIDO!</seg>
+      </tuv>
+    </tu>
+<!-- Alternative translations -->
+  </body>
+</tmx>
