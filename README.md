@@ -1,3 +1,2 @@
 # redhat-ansible
-# redhat-ansible
-# redhat-ansible
+Voltamos aos trabalhos.
